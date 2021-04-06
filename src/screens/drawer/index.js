@@ -31,7 +31,7 @@ const DrawerContent = ({navigation}) => {
         <Text style={styles.linkText}>Сделать фото</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate('LoginScreen')}
+        onPress={() => navigation.navigate('ProfileScreen')}
         style={styles.linkContainer}>
         <Text style={styles.linkText}>Профиль</Text>
       </TouchableOpacity>
