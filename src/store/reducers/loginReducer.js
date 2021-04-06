@@ -1,4 +1,4 @@
-import * as types from '../actions/loginAction';
+import * as types from '../actions/loginActions';
 
 const initialState = {
   logged: false,

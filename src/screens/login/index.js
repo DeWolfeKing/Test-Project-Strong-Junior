@@ -9,7 +9,7 @@ import {
   Image,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {loginFailed, loginSuccess} from '../../store/actions/loginAction';
+import {loginFailed, loginSuccess} from '../../store/actions/loginActions';
 import {useNavigation} from '@react-navigation/native';
 
 const LoginScreen = () => {

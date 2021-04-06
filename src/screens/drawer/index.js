@@ -7,7 +7,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../../store/actions/loginAction';
+import {login} from '../../store/actions/loginActions';
 
 const DrawerContent = () => {
   return (
