@@ -1,13 +1,13 @@
 import {call, put, all, takeLatest} from 'redux-saga/effects';
-import * as types from '../actions/loginActions';
+import * as types from '../actions/newsActions';
 import {create} from 'apisauce';
-import {successNews} from '../actions/newsActions';
+import {failedNews, successNews} from '../actions/newsActions';
 const api = create({
   baseURL:
     'https://newsapi.org/v2/everything' +
     '?q=Apple&from=2021-04-06' +
-    '&sortBy=popularity'
-    // '&apiKey=6cc518029f6448e9b7e720f57cd632bf',
+    '&sortBy=popularity' +
+    '&apiKey=6cc518029f6448e9b7e720f57cd632bf',
 });
 function* newsSaga() {
   try {
@@ -15,10 +15,10 @@ function* newsSaga() {
     console.warn(response);
     yield put(successNews(response.data.articles));
   } catch (response) {
-    yield put(successNews(response.data.message));
+    yield put(failedNews(response.data.message));
   }
 }
 
 export function* watchNewsSaga() {
-  yield all([takeLatest(types.LOGIN_SUCCESS, newsSaga)]);
+  yield all([takeLatest(types.FETCHING_NEWS, newsSaga)]);
 }

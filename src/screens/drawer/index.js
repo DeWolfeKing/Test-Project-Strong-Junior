@@ -6,28 +6,38 @@ import {
   StyleSheet,
   SafeAreaView,
 } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../../store/actions/loginActions';
 
-const DrawerContent = () => {
+const DrawerContent = ({navigation}) => {
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white', marginTop: 40}}>
-      <TouchableOpacity style={styles.linkContainer}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('LoginScreen')}
+        style={styles.linkContainer}>
         <Text style={styles.linkText}>Логин</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.linkContainer}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('NewsScreen')}
+        style={styles.linkContainer}>
         <Text style={styles.linkText}>Новости</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.linkContainer}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('LoginScreen')}
+        style={styles.linkContainer}>
         <Text style={styles.linkText}>QR-generator</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.linkContainer}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('LoginScreen')}
+        style={styles.linkContainer}>
         <Text style={styles.linkText}>Сделать фото</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.linkContainer}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('LoginScreen')}
+        style={styles.linkContainer}>
         <Text style={styles.linkText}>Профиль</Text>
       </TouchableOpacity>
-      <TouchableOpacity style={styles.linkContainer}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('LoginScreen')}
+        style={styles.linkContainer}>
         <Text style={styles.linkText}>Выйти</Text>
       </TouchableOpacity>
     </SafeAreaView>

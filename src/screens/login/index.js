@@ -10,11 +10,9 @@ import {
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {loginFailed, loginSuccess} from '../../store/actions/loginActions';
-import {useNavigation} from '@react-navigation/native';
 
-const LoginScreen = () => {
+const LoginScreen = ({navigation}) => {
   const dispatch = useDispatch();
-  const navigation = useNavigation();
   const [loginInput, setLoginInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const {successLogin, successPassword, error} = useSelector(

@@ -6,10 +6,10 @@ export const fetchingNews = () => ({
   type: FETCHING_NEWS,
 });
 export const successNews = (data) => ({
-  type: FETCHING_NEWS,
+  type: SUCCESS_NEWS,
   payload: data,
 });
 export const failedNews = (error) => ({
-  type: FETCHING_NEWS,
+  type: FAILED_NEWS,
   payload: error,
 });
