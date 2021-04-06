@@ -8,7 +8,7 @@ import {IN_GGG} from '../actions/loginAction';
 // });
 function* loginSaga() {
   try {
-    console.warn('Я ГИРЯ');
+    // console.warn('Я ГИРЯ');
   } catch (response) {
     console.warn('ЗАБОТЮСЬ О ТЕБЕ');
   }
