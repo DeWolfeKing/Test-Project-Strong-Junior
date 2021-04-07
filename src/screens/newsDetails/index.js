@@ -1,60 +1,63 @@
 import React, {useEffect} from 'react';
-import { Dimensions } from 'react-native';
+import {Dimensions} from 'react-native';
 import {
-    View,
-    SafeAreaView,
-    TouchableOpacity,
-    Image,
-    Text,
-    ScrollView,
-    StyleSheet,
+  View,
+  SafeAreaView,
+  TouchableOpacity,
+  Image,
+  Text,
+  ScrollView,
+  StyleSheet,
 } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
 import {useNavigation} from '@react-navigation/native';
 
-const NewsDetailsScreen = (props) => {
-    const navigation = useNavigation();
-    const item = props.route.params;
-    return (
-        <SafeAreaView style={{flex: 1}}>
-            <View
-                style={{
-                    flexDirection: 'row',
-                    borderBottomWidth: 1,
-                    alignItems: 'center',
-                }}>
-                <TouchableOpacity onPress={() => navigation.goBack()} style={{}}>
-                    <Text style={{marginLeft:15,fontSize: 24,fontWeight: 'bold'}}>BACK</Text>
-
-                </TouchableOpacity>
-                <Text
-                    style={{
-                        fontSize: 24,
-                        marginVertical: 10,
-                        textAlign: 'right',
-                        flex: 1,
-                        marginRight: 20,
-                    }}>
-                    username
-                </Text>
-            </View>
-            <ScrollView style={{flex: 1}}>
-                <Image
-                    style={{width: Dimensions.get('window').width, height: Dimensions.get('window').width}}
-                    source={{uri: item.urlToImage}}
-                />
-                <Text style={{marginHorizontal: 30,marginVertical: 10, fontSize: 16}}>
-                    Подпись :{item.content}
-                </Text>
-                <Text style={{marginHorizontal: 30,marginVertical: 10, fontSize: 16}}>
-                    Name : {item.source.name}
-                </Text>
-                <Text style={{marginHorizontal: 30,marginVertical: 10, fontSize: 16}}>
-                    Время :{item.publishedAt}
-                </Text>
-            </ScrollView>
-        </SafeAreaView>
-    );
+const NewsDetailsScreen = props => {
+  const navigation = useNavigation();
+  const item = props.route.params;
+  return (
+    <SafeAreaView style={{flex: 1}}>
+      <View style={styles.headerContainer}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={{}}>
+          <Text style={styles.headerGoBackButton}>BACK</Text>
+        </TouchableOpacity>
+        <Text style={styles.headerUserNameText}>username</Text>
+      </View>
+      <ScrollView style={{flex: 1}}>
+        <Image style={styles.image} source={{uri: item.urlToImage}} />
+        <Text style={styles.contentText}>{item.content}</Text>
+        <Text style={styles.contentText}>{item.source.name}</Text>
+        <Text style={styles.contentText}>{item.publishedAt}</Text>
+      </ScrollView>
+    </SafeAreaView>
+  );
 };
 
+const styles = StyleSheet.create({
+  headerContainer: {
+    flexDirection: 'row',
+    borderBottomWidth: 1,
+    alignItems: 'center',
+  },
+  headerUserNameText: {
+    fontSize: 24,
+    marginVertical: 10,
+    textAlign: 'right',
+    flex: 1,
+    marginRight: 20,
+  },
+  headerGoBackButton: {
+    marginLeft: 15,
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  contentText: {
+    marginHorizontal: 30,
+    marginVertical: 10,
+    fontSize: 16,
+  },
+  image: {
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').width,
+  },
+});
 export default NewsDetailsScreen;

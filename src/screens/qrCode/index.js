@@ -15,7 +15,7 @@ import {calcFontSize, calcHeight} from '../../utilits/dimensions';
 const QrCodeScreen = () => {
   const navigation = useNavigation();
   let base64Logo = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAA..';
-  const [qrCodeInput, setQrCodeInput] = useState('111');
+  const [qrCodeInput, setQrCodeInput] = useState('');
   return (
     <SafeAreaView style={{flex: 1}}>
       <View
