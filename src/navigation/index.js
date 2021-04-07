@@ -10,6 +10,7 @@ import ProfileScreen from '../screens/profile';
 import {store, persistor} from '../store';
 import {PersistGate} from 'redux-persist/integration/react';
 import QrCodeScreen from '../screens/qrCode';
+import CreatePhotoScreen from '../screens/creactePhoto';
 
 const Drawer = createDrawerNavigator();
 
@@ -32,6 +33,7 @@ export const Nav = () => {
             />
             <Drawer.Screen name="ProfileScreen" component={ProfileScreen} />
             <Drawer.Screen name="QrCodeScreen" component={QrCodeScreen} />
+            <Drawer.Screen name="CreatePhotoScreen" component={CreatePhotoScreen} />
           </Drawer.Navigator>
         </NavigationContainer>
       </PersistGate>
