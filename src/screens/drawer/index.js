@@ -21,7 +21,7 @@ const DrawerContent = ({navigation}) => {
         <Text style={styles.linkText}>Новости</Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate('LoginScreen')}
+        onPress={() => navigation.navigate('QrCodeScreen')}
         style={styles.linkContainer}>
         <Text style={styles.linkText}>QR-generator</Text>
       </TouchableOpacity>
