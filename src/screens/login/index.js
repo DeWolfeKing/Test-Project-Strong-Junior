@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
 import {loginFailed, loginSuccess} from '../../store/actions/loginActions';
+import Header from '../../components/header';
 
 const LoginScreen = ({navigation}) => {
   const dispatch = useDispatch();
@@ -19,43 +20,18 @@ const LoginScreen = ({navigation}) => {
     state => state.loginReducer,
   );
   const login = () => {
-    console.warn('1');
-    console.warn(loginInput, successLogin);
-
     if (loginInput === successLogin) {
-
       if (passwordInput === successPassword) {
-        console.warn('3');
-
         dispatch(loginSuccess());
         navigation.navigate('NewsScreen');
       } else {
-        console.warn('4');
-
         dispatch(loginFailed());
       }
     }
   };
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white'}}>
-      <View style={{flexDirection: 'row', borderBottomWidth: 1,alignItems: 'center'}}>
-        <TouchableOpacity onPress={() => navigation.openDrawer()} style={{}}>
-          <Image
-            style={{width: 40, height: 40, marginLeft: 10}}
-            source={require('../../assets/drawer.png')}
-          />
-        </TouchableOpacity>
-        <Text
-          style={{
-            fontSize: 24,
-            marginVertical: 10,
-            textAlign: 'right',
-            flex: 1,
-            marginRight: 20,
-          }}>
-          username
-        </Text>
-      </View>
+      <Header drawer />
       <View style={{marginHorizontal: 20, marginTop: 50}}>
         <TextInput
           value={loginInput}

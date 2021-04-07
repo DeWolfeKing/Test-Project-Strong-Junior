@@ -13,6 +13,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import {fetchingNews} from '../../store/actions/newsActions';
 import {useNavigation} from '@react-navigation/native';
 import {calcFontSize, calcWidth} from '../../utilits/dimensions';
+import Header from '../../components/header';
 
 const NewsScreen = () => {
   const dispatch = useDispatch();
@@ -23,16 +24,7 @@ const NewsScreen = () => {
   }, []);
   return (
     <SafeAreaView style={{flex: 1}}>
-      <View style={styles.headerContainer}>
-        <TouchableOpacity onPress={() => navigation.openDrawer()} style={{}}>
-          <Image
-            resizeMode={'contain'}
-            style={styles.headerDrawerButton}
-            source={require('../../assets/drawer.png')}
-          />
-        </TouchableOpacity>
-        <Text style={styles.headerUserNameText}>username</Text>
-      </View>
+      <Header drawer />
       {isFetching ? (
         <View style={styles.activityIndicatorContainer}>
           <ActivityIndicator size="large" color="black" />
@@ -54,23 +46,6 @@ const NewsScreen = () => {
 };
 
 const styles = StyleSheet.create({
-  headerContainer: {
-    flexDirection: 'row',
-    borderBottomWidth: 1,
-    alignItems: 'center',
-  },
-  headerDrawerButton: {
-    width: 40,
-    height: 40,
-    marginLeft: 10,
-  },
-  headerUserNameText: {
-    fontSize: 24,
-    marginVertical: 10,
-    textAlign: 'right',
-    flex: 1,
-    marginRight: 20,
-  },
   contentContainer: {
     flex: 1,
     marginHorizontal: calcWidth(5),
