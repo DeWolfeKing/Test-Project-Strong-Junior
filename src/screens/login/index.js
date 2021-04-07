@@ -19,11 +19,19 @@ const LoginScreen = ({navigation}) => {
     state => state.loginReducer,
   );
   const login = () => {
+    console.warn('1');
+    console.warn(loginInput, successLogin);
+
     if (loginInput === successLogin) {
+
       if (passwordInput === successPassword) {
+        console.warn('3');
+
         dispatch(loginSuccess());
-        // navigation.navigate('')
+        navigation.navigate('NewsScreen');
       } else {
+        console.warn('4');
+
         dispatch(loginFailed());
       }
     }

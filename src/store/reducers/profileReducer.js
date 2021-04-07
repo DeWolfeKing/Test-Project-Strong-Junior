@@ -1,9 +1,10 @@
 import * as types from '../actions/profileActions';
+import {RESET_APP} from '../actions/loginActions';
 
 const initialState = {
-  firstName: '1',
-  lastName: '1',
-  phoneNumber: '1',
+  firstName: '',
+  lastName: '',
+  phoneNumber: '',
 };
 
 export const profileReducer = (state = initialState, action) => {
@@ -15,6 +16,9 @@ export const profileReducer = (state = initialState, action) => {
         lastName: action.payload.lastName,
         phoneNumber: action.payload.phoneNumber,
       };
+    }
+    case RESET_APP: {
+      return initialState;
     }
     default: {
       return state;

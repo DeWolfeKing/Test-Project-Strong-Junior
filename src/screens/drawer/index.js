@@ -6,15 +6,14 @@ import {
   StyleSheet,
   SafeAreaView,
 } from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {logout} from '../../store/actions/loginActions';
 
 const DrawerContent = ({navigation}) => {
+  const {logged} = useSelector(state => state.loginReducer);
+  const dispatch = useDispatch();
   return (
     <SafeAreaView style={{flex: 1, backgroundColor: 'white', marginTop: 40}}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate('LoginScreen')}
-        style={styles.linkContainer}>
-        <Text style={styles.linkText}>Логин</Text>
-      </TouchableOpacity>
       <TouchableOpacity
         onPress={() => navigation.navigate('NewsScreen')}
         style={styles.linkContainer}>
@@ -31,14 +30,26 @@ const DrawerContent = ({navigation}) => {
         <Text style={styles.linkText}>Сделать фото</Text>
       </TouchableOpacity>
       <TouchableOpacity
+        disabled={!logged}
         onPress={() => navigation.navigate('ProfileScreen')}
-        style={styles.linkContainer}>
-        <Text style={styles.linkText}>Профиль</Text>
+        style={[
+          styles.linkContainer,
+          {borderColor: !logged ? 'lightgray' : 'black'},
+        ]}>
+        <Text
+          style={[styles.linkText, {color: !logged ? 'lightgray' : 'black'}]}>
+          Профиль
+        </Text>
       </TouchableOpacity>
       <TouchableOpacity
-        onPress={() => navigation.navigate('LoginScreen')}
+        onPress={() => {
+          navigation.navigate('LoginScreen');
+          if (logged) {
+            dispatch(logout());
+          }
+        }}
         style={styles.linkContainer}>
-        <Text style={styles.linkText}>Выйти</Text>
+        <Text style={styles.linkText}>{logged ? 'Выйти' : 'Войти'}</Text>
       </TouchableOpacity>
     </SafeAreaView>
   );

@@ -1,4 +1,5 @@
 import * as types from '../actions/loginActions';
+import {RESET_APP} from '../actions/loginActions';
 
 const initialState = {
   logged: false,
@@ -21,8 +22,11 @@ export const loginReducer = (state = initialState, action) => {
         error: action.error,
       };
     }
+    case RESET_APP: {
+      return initialState;
+    }
     default: {
-      return {...state};
+      return state;
     }
   }
 };
