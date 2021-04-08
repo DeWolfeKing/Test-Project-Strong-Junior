@@ -20,13 +20,22 @@ const LoginScreen = ({navigation}) => {
     state => state.loginReducer,
   );
   const login = () => {
-    if (loginInput === successLogin) {
+    if (!loginInput || !passwordInput) {
+      dispatch(loginFailed('Заполните все поля'));
+      setPasswordInput('');
+    } else if (loginInput === successLogin) {
       if (passwordInput === successPassword) {
         dispatch(loginSuccess());
+        setLoginInput('');
+        setPasswordInput('');
         navigation.navigate('NewsScreen');
       } else {
-        dispatch(loginFailed());
+        dispatch(loginFailed('Неверный пароль'));
+        setPasswordInput('');
       }
+    } else {
+      dispatch(loginFailed('Неверный логин'));
+      setPasswordInput('');
     }
   };
   return (

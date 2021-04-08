@@ -19,7 +19,7 @@ export const loginReducer = (state = initialState, action) => {
     case types.LOGIN_FAILED: {
       return {
         ...state,
-        error: action.error,
+        error: action.payload,
       };
     }
     case RESET_APP: {

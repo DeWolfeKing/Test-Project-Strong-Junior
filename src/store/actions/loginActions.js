@@ -5,9 +5,9 @@ export const RESET_APP = 'RESET_APP';
 export const loginSuccess = () => ({
   type: LOGIN_SUCCESS,
 });
-export const loginFailed = (payload) => ({
+export const loginFailed = (error) => ({
   type: LOGIN_FAILED,
-  error: payload,
+  payload: error,
 });
 export const logout = () => ({
   type: RESET_APP,
